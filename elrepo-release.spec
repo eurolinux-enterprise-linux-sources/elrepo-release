@@ -4,7 +4,7 @@
 Summary: ELRepo.org Community Enterprise Linux Repository release file
 Name: elrepo-release
 Version: 6
-Release: 3%{?dist}
+Release: 4%{?dist}
 License: GPLv2
 Group: System Environment/Base
 URL: http://elrepo.org/
@@ -12,7 +12,6 @@ URL: http://elrepo.org/
 Source0: elrepo.repo
 Source1: RPM-GPG-KEY-elrepo.org
 
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-build-%(%{__id_u} -n)
 BuildArch: noarch
 
 %description
@@ -20,13 +19,12 @@ This package contains yum configuration for the ELRepo.org Community Enterprise 
 
 %prep
 %setup -c -T
+%{__cp} -a %{SOURCE1} .
 
-%build
-# Nothing to build
+# %build
 
 %install
 %{__rm} -rf %{buildroot}
-%{__cp} -a %{SOURCE1} .
 %{__install} -Dpm 0644 %{SOURCE0} %{buildroot}%{_sysconfdir}/yum.repos.d/elrepo.repo
 %{__install} -Dpm 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-elrepo.org
 
@@ -42,6 +40,11 @@ This package contains yum configuration for the ELRepo.org Community Enterprise 
 %{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-elrepo.org
 
 %changelog
+* Wed Jun 15 2011 Akemi Yagi <toracat@elrepo.org> - 6-4
+- Added extras repo
+- Enable elrepo repo by default
+- Clean up the code in the spec file [Alan Bartlett <ajb@elrepo.org>]
+
 * Sun Jan 30 2011 Philip J Perry <phil@elrepo.org> - 6-3
 - Added mirrorlist
 - Update license to GPLv2
