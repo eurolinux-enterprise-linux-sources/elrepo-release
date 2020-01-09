@@ -1,11 +1,11 @@
-### Name: ElRepo.org Community Enterprise Linux Repository for el6
+### Name: ELRepo.org Community Enterprise Linux Repository for el6
 ### URL: http://elrepo.org/
 
-Summary: ElRepo.org Community Enterprise Linux Repository release file
+Summary: ELRepo.org Community Enterprise Linux Repository release file
 Name: elrepo-release
 Version: 6
-Release: 2%{?dist}
-License: GPL
+Release: 3%{?dist}
+License: GPLv2
 Group: System Environment/Base
 URL: http://elrepo.org/
 
@@ -16,7 +16,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-build-%(%{__id_u} -n)
 BuildArch: noarch
 
 %description
-This package contains yum configuration for the ElRepo.org Community Enterprise Linux Repository, as well as the public GPG keys used to sign packages.
+This package contains yum configuration for the ELRepo.org Community Enterprise Linux Repository, as well as the public GPG keys used to sign packages.
 
 %prep
 %setup -c -T
@@ -42,6 +42,11 @@ This package contains yum configuration for the ElRepo.org Community Enterprise 
 %{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-elrepo.org
 
 %changelog
+* Sun Jan 30 2011 Philip J Perry <phil@elrepo.org> - 6-3
+- Added mirrorlist
+- Update license to GPLv2
+- Fixed capitalisation in Description and Summary
+
 * Mon Nov 15 2010 Akemi Yagi <toracat@elrepo.org> - 6-2
 - Incorrect tag corrected.
 
